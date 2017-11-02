@@ -7,7 +7,8 @@ class CustomerTest < Minitest::Test
         #setup
         def setup
                 @customer = Customer.new("last_name", "first_name", "phone_number", "street_address", "city", "us_state", "zip_code")
-                @customer.create_new_customer
+                @new_customer = @customer.create_new_customer
+                @customer.id = @new_customer
         end
 
         #Test for instance intialize that creates customer fields
@@ -27,25 +28,25 @@ class CustomerTest < Minitest::Test
         # Test create customer sql
         def test_create_customer_sql
                 new_customer_id = @customer.create_new_customer
-                assert_operator new_customer_id, :>, 0
+                assert_operator(new_customer_id, :>, 0)
         end
     
         # Test query for all customers
         def test_all_customers
                 all_customers = @customer.get_all_customers
-                assert_instance_of Array, all_customers
+                assert_instance_of(Array, all_customers)
         end
     
         # Test query single customer
         def test_single_customer
                 # add customer to database before it passed
                 single_customer = @customer.get_single_customer(1)
-                assert_instance_of Hash, single_customer
+                assert_instance_of(Array, single_customer)
         end
         # Test Update customer
         def test_update_customer
-                update_customer= @customer.update_customer(1)
-                assert_instance_of Hash, update_customer
+                update_customer = @customer.update_customer(@customer)
+                assert_instance_of(Array, update_customer)
         end
     
 end
