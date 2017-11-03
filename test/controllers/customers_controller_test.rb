@@ -89,4 +89,14 @@ class CustomersControllerTest < Minitest::Test
         
     end
 
+    # This is the tests for Ticket #2
+
+    # Write test for set active method
+    def test_set_and_get_active_customer
+        CustomersController.set_active_customer(1)
+       returned_active_customer =  CustomersController.get_active_customer
+       assert_equal 1, returned_active_customer
+    end
+
+
 end
