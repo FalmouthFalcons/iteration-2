@@ -59,4 +59,21 @@ class CustomersController
         end
     end
 
+    # This is the beggining of Ticket #2
+
+    # This is setting the active customer
+    def self.set_active_customer(customer_id)
+        @@customer_active = customer_id
+    end
+
+    # This is getting the active customer ("return" is not needed, but looks nice)
+    def self.get_active_customer
+        return @@customer_active
+    end
+
+    # We are refering to the method that will get all customers, and then display them on the cli
+    def menu_for_getting_active_customer
+        get_all_customers
+        
+    end
 end
