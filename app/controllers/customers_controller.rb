@@ -7,6 +7,7 @@ class CustomersController
    
 
     def add_new_customer_menu
+        begin
         puts "Enter customer first name: "
         p ">"
         @first_name = set_field
@@ -36,21 +37,26 @@ class CustomersController
         @zip_code = set_field
         
         add_new_customer
+        rescue SQLite3::Exception => e
+        p "Exception with database query: #{e}"
+        end
     end
 
     def add_new_customer
-
-        
+        begin
         aCustomer = Customer.new(@last_name, @first_name, @phone_number, @street_address, @city, @us_state, @zip_code )
-
         aCustomer.create_new_customer
-        
+        rescue SQLite3::Exception => e
+        p "Exception with database query: #{e}"
+        end
     end
 
     def set_field
-         gets.chomp
-        
-        
+        begin
+        gets.chomp
+        rescue SQLite3::Exception => e
+        p "Exception with database query: #{e}"
+        end
     end
 
 end
