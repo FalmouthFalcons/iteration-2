@@ -6,7 +6,7 @@ class Customer
 
     attr_accessor :id, :last_name, :first_name, :phone_number, :street_address, :city, :us_state, :zip_code
     #intialze that creates customer fields
-    def initialize (last_name, first_name, phone_number, street_address, city, us_state, zip_code)
+    def initialize (last_name = nil, first_name = nil, phone_number = nil, street_address = nil, city = nil, us_state = nil, zip_code = nil)
         @last_name = last_name
         @first_name = first_name
         @phone_number = phone_number
@@ -21,8 +21,8 @@ class Customer
 
     def create_new_customer
         begin
-        db = SQLite3::Database.open("../../db/bangazon_sqlite3.sqlite3")
-        db.execute('INSERT INTO customers (last_name, first_name, phone_number, street_address, city, us_state, zip_code) VALUES ("Doe", "John", "(555)555-1234", "1234 Main Street", "Nashville", "TN", "65432")')
+        db = SQLite3::Database.open(ENV["BANGAZON"])
+        db.execute('INSERT INTO customers (last_name, first_name, phone_number, street_address, city, us_state, zip_code) VALUES (?, ?, ?, ?, ?, ?, ?)',[@last_name, @first_name, @phone_number, @street_address, @city, @us_state, @zip_code])
         last_record = db.last_insert_row_id
         db.close
         last_record
@@ -35,7 +35,7 @@ class Customer
 
     def get_all_customers
             begin
-            db = SQLite3::Database.open("../../db/bangazon_sqlite3.sqlite3")
+            db = SQLite3::Database.open(ENV["BANGAZON"])
             array_of_customers = db.execute ("SELECT * FROM customers")
             db.close
             rescue SQLite3::Exception => e
@@ -47,7 +47,7 @@ class Customer
     # query single customer
     def get_single_customer(single_customer)
             begin
-            db = SQLite3::Database.open("../../db/bangazon_sqlite3.sqlite3")
+            db = SQLite3::Database.open(ENV["BANGAZON"])
             get_single = db.execute ("SELECT * FROM customers WHERE id = #{single_customer}")
             db.close
             rescue SQLite3::Exception => e
@@ -60,7 +60,7 @@ class Customer
     # Update customer
     def update_customer(single_customer)
             begin
-            db = SQLite3::Database.open("../../db/bangazon_sqlite3.sqlite3")
+            db = SQLite3::Database.open(ENV["BANGAZON"])
             update_customer = db.execute(
             "UPDATE customers SET
 
