@@ -1,10 +1,10 @@
 require_relative '../models/customer.rb'
 
-class CustomersController 
-    attr_accessor :last_name, :first_name, :phone_number, :street_address, :city, :us_state, :zip_code  
-    
-   
-   
+class CustomersController
+    attr_accessor :last_name, :first_name, :phone_number, :street_address, :city, :us_state, :zip_code
+
+
+
 
     def add_new_customer_menu
         begin
@@ -15,27 +15,27 @@ class CustomersController
         puts "Enter customer last name: "
         p ">"
         @last_name = set_field
-        
+
         puts "Enter Phone Number: "
         p ">"
         @phone_number = set_field
-        
+
         puts "Enter street address: "
         p ">"
         @street_address = set_field
-        
+
         puts "Enter City: "
         p ">"
         @city = set_field
-        
+
         puts "Enter State: "
         p ">"
         @us_state = set_field
-        
+
         puts "Enter Zip code: "
         p ">"
         @zip_code = set_field
-        
+
         add_new_customer
         rescue SQLite3::Exception => e
         p "Exception with database query: #{e}"
@@ -73,7 +73,10 @@ class CustomersController
 
     # We are refering to the method that will get all customers, and then display them on the cli
     def menu_for_getting_active_customer
-        get_all_customers
-        
+        list_of_customers = Customer.new.get_all_customers
+        puts "which customer will be active?"
+        list_of_customers.each_with_index do |customer, index|
+            puts "#{index+1}. #{customer[2]} #{customer[1]}"
+        end
     end
 end
