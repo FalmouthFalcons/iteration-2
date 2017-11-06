@@ -16,16 +16,6 @@ class CustomerTest < Minitest::Test
                 end
         end
 
-        #Test for intialize which creates customer fields
-        def test_initialize
-                begin
-                assert_raises ArgumentError do
-                        Customer.new
-                end
-                rescue SQLite3::Exception => e
-                p "Exception with test_initialize: #{e}"
-                end
-        end
 
         # Test for initialized class with arguments
         def test_initialize_with_arguments
