@@ -74,11 +74,7 @@ class CustomersController
 
     # This is getting the active customer ("return" is not needed, but looks nice)
     def self.get_active_customer
-        begin
         return @@customer_active
-        rescue SQLite3::Exception => e
-        p "Exception with get_active_customer: #{e}"
-        end
     end
 
     # We are refering to the method that will get all customers, and then display them on the CLI menu when set active customer is selected
