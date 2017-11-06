@@ -1,19 +1,24 @@
 require 'minitest/autorun'
 require_relative '../app/controllers/payment_type_controller.rb'
 
+
 class PaymentTypeControllerTest < Minitest::Test
     
+    def setup 
+        @paymentTypeController = PaymentTypeController.new 
+        @paymentTypeController.payment_type = "MasterCard"
+        @paymentTypeController.account_number = "987654321000"
+    end 
 
-    # Test GET all payment - get
+    def test_add_payment_type
+        assert_equal @paymentTypeController.payment_type, "MasterCard"
+    end 
 
-
-    # Test GET single payment - get
-
-
-    # Test Create payment - post
-
-
-    # Test Update payment by id - patch/put
-
+    def test_add_account_number
+        assert_equal @paymentTypeController.account_number, "987654321000"
+    end 
 
 end
+
+
+
