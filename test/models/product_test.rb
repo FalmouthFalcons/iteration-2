@@ -23,11 +23,6 @@ class ProductTest < Minitest::Test
                 assert_instance_of Product, Product.new("arg1", "arg2")
         end
 
-        #setup
-<<<<<<< HEAD
-        # get_single_product
-        # get list of products by customer id
-
 
         #test for deleting product
         def test_destroy_product
@@ -39,19 +34,9 @@ class ProductTest < Minitest::Test
         # And when one is selected, it should be deleted from the system if it has not been added to an order yet
 
 
-
-        
-
-
-
-
         #Test for instance intialize that creates product fields
     
-=======
-        def setup
-                @product = Product.new("Blue Book", "6.99", 1)
-        end
->>>>>>> master
+
         # Test create product sql
         # I am testing that the product was created(I think, but maybe not)
         def test_create_new_product
