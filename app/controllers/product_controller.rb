@@ -1,3 +1,5 @@
+require_relative '../models/product.rb'
+
 class ProductController 
     attr_accessor :product_title, :product_price, :customer_id
 
@@ -34,7 +36,7 @@ class ProductController
 
     # Create product - post
     def add_new_product
-            aProduct = product.new(product_title, product_price, customer_id)
+            aProduct = Product.new(@product_title, @product_price, @customer_id)
             aProduct.create_new_product
     end
 
