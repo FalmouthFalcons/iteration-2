@@ -46,6 +46,16 @@ class ProductTest < Minitest::Test
         end
     
         # Test query for all product
+        # I am testing to see if the result is greater than or equal to one. If so, that means that I'm pulling in
+        # the customer's products
+        def get_all_active_customer_products()
+                begin
+                        @active_customer_products = @product.get_all_active_customer_products
+                        assert_instance_of(Array, all_products)1er
+                rescue SQLite3::Exception => e
+                        p "Exception with test_all_customers: #{e}"
+                end
+        end
     
         # Test query single product
     

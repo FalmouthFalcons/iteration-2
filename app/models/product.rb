@@ -33,7 +33,10 @@ class Product
                 db.close
                 destroy_product
         end
-    
+        # get all  of the active customer's products
+        def get_all_active_customer_products
+
+        end
     
 end
 
