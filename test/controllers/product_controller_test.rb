@@ -22,6 +22,7 @@ class ProductControllerTest < Minitest::Test
 
 
 def test_destroy_product
+    
 end
 
 
