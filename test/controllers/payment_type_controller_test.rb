@@ -1,6 +1,6 @@
 require 'minitest/autorun'
-require_relative '../app/controllers/payment_type_controller.rb'
-
+require_relative '../../app/controllers/payment_type_controller.rb'
+require_relative '../../app/controllers/customers_controller.rb'
 
 class PaymentTypeControllerTest < Minitest::Test
     
