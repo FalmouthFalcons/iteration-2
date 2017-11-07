@@ -20,6 +20,14 @@ class ProductControllerTest < Minitest::Test
         assert_equal @productsController.product_price, "7.99"
     end
 
+
+def test_destroy_product
+end
+
+
+    #set_active_customer_
+    #and_get_active_customer??
+
     # Test GET all product - get
 
 

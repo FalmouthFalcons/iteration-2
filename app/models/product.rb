@@ -25,12 +25,22 @@ class Product
 
         end
     
-        # query for all product
-    
-        # query single product
-    
-        # Update product
    
         # delete product
+        def destroy_product(single_product_id)
+                db = SQLite3::Database.open(ENV["BANGAZON"])
+                destroy_product = db.execute("DELETE FROM products where ID = ?", [single_product_id])
+                db.close
+                destroy_product
+        end
+    
     
 end
+
+
+
+        
+
+
+     
+    
