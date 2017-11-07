@@ -1,4 +1,5 @@
 require_relative 'customers_controller.rb'
+require_relative 'product_controller.rb'
 
 class MainMenuController
   def display_main_menu
@@ -8,6 +9,7 @@ class MainMenuController
     puts "*************************************************"
     puts "1. Create a customer account"
     puts "2. Choose active customer"
+    puts "4. Add a new product"
     # Add all other options available to the user here.
     puts "12. Leave Bangazon!"
 
@@ -24,7 +26,8 @@ class MainMenuController
     when "3"
 
     when "4"
-
+      # Call the method that will display the prompts for choosing to add a new product
+      ProductController.new.add_new_product_menu
     when "5"
     end
   end
