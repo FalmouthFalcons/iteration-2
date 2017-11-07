@@ -21,7 +21,6 @@ class ProductTest < Minitest::Test
          # Test for initialized class with arguments
          def test_initialize_with_arguments
                 assert_instance_of Product, Product.new("arg1", "arg2")
-                p "Exception with test_initialize_with_arguments: #{e}"
         end
 
         #setup
@@ -32,8 +31,8 @@ class ProductTest < Minitest::Test
         #test for deleting product
         def test_destroy_product
                 new_product_id = @product.create_new_product
-                destroy_product = @product.destroy_product(@product)
-                assert_equal nil, destroy_product
+                destroy_product = @product.destroy_product(new_product_id)
+                assert_equal 0, destroy_product.length
         end
 
         # And when one is selected, it should be deleted from the system if it has not been added to an order yet
