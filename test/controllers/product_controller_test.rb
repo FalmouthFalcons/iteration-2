@@ -20,8 +20,8 @@ class ProductControllerTest < Minitest::Test
         assert_equal @productsController.product_price, "7.99"
     end
 
-
-def test_destroy_product
+#test_destroy_product not needed -- same thing happens in product_test.rb
+def test_destroy_products
     
 end
 

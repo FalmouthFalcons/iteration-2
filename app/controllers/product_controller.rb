@@ -16,7 +16,7 @@ class ProductController
         @customer_id = set_field
 
         add_new_product
-    end
+    end 
     
     # This method is collecting the user's input
     def set_field
@@ -29,7 +29,14 @@ class ProductController
 
 
     # GET all product - get
-    
+    list_of_products = Product.new.get_all_products
+    puts "Select customer by id to update account:"
+    list_of_customers.each_with_index do |customer, index|
+        puts "#{index+1}. #{customer[2]} #{customer[1]}"
+    end
+
+
+
 
 
     # GET single product - get
@@ -45,6 +52,8 @@ class ProductController
     # Update product by id - patch/put
 
     # Delete product by id - destroy
-
+    def delete_product(single_product_id)
+        Product.new.destroy_product(single_product_id)
+    end
 
 end
