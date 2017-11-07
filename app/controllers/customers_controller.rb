@@ -81,12 +81,19 @@ class CustomersController
     def menu_for_getting_active_customer
         begin
         list_of_customers = Customer.new.get_all_customers
-        puts "which customer will be active?"
+        puts "Which customer will be active?"
         list_of_customers.each_with_index do |customer, index|
             puts "#{index+1}. #{customer[2]} #{customer[1]}"
         end
+        #Capture user input for customer_id #; provide confirmation of selected customer 
+        selected_customer = gets.chomp
+        active_customer = list_of_customers[(selected_customer.to_i - 1)]
+            puts "Selected Customer: #{active_customer[2]} #{active_customer[1]}"
+        
+        self.class.set_active_customer(active_customer[0])    
+
         rescue SQLite3::Exception => e
         p "Exception with menu_for_getting_active_customer: #{e}"
-        end
+        end 
     end
 end
