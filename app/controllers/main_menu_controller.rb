@@ -11,6 +11,8 @@ class MainMenuController
     puts "1. Create a customer account"
     puts "2. Choose customer to update"
     puts "3. Add a payment type for customer"
+    puts "4. "
+    
 
     # Add all other options available to the user here.
     puts "12. Leave Bangazon!"
@@ -30,24 +32,23 @@ class MainMenuController
       CustomersController.new.menu_for_getting_active_customer 
     
     when "3"
-      PaymentTypeController.new.add_payment_type_menu
       # # Is "2" active customer selected? 
-      #   PaymentTypeController.new.menu_customer_selected = false  
       # # If NO, puts "must select customer from option 2", redirect to main menu.
-      #   puts "You must select a customer from menu option #2 before adding a payment type."
-      # elsif 
+      if CustomersController.get_active_customer == nil 
+        puts "Must select active customer from option 2."
+      else 
       # # If YES, Call the method that will display the prompts for adding payment type.
-        # PaymentTypeController.new.menu_customer_selected = true
+      PaymentTypeController.new.add_payment_type_menu
+      # and confirm this update back at the main menu in a puts, via the payment_type_controller...
+      end   
 
-      # Display option to add payment type to active user:  
-        
     when "4"
 
     when "5"
     
-      when "12" 
+    when "12" 
           break
-      end
+    end 
     end 
   end
 end
