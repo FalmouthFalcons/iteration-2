@@ -1,4 +1,5 @@
 require_relative 'customers_controller.rb'
+require_relative 'product_controller.rb'
 require_relative 'payment_type_controller.rb'
 class MainMenuController
 
@@ -9,11 +10,9 @@ class MainMenuController
     puts "Welcome to Bangazon! Command Line Ordering System"
     puts "*************************************************"
     puts "1. Create a customer account"
-    puts "2. Choose customer to update"
+    puts "2. Choose active customer"
     puts "3. Add a payment type for customer"
-    puts "4. "
-    
-
+    puts "4. Add a new product"
     # Add all other options available to the user here.
     puts "12. Leave Bangazon!"
 
@@ -43,7 +42,8 @@ class MainMenuController
       end   
 
     when "4"
-
+      # Call the method that will display the prompts for choosing to add a new product
+      ProductController.new.add_new_product_menu
     when "5"
     
     when "12" 
