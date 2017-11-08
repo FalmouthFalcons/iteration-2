@@ -49,7 +49,20 @@ class ProductTest < Minitest::Test
                 # test returns array
                 assert_instance_of(Array, all_products)
         end
+
+
+        # Test to delete from product database integration 
+        def test_product_database_integration
+                product_id = @product.create_new_product
+                db = SQLite3::Database.open(ENV["BANGAZON"])
+                test_nil_product = db.execute("DELETE FROM products WHERE id  = #{product_id};")
+                assert_empty test_nil_product
+                # assert_equal "53", delete_product_integration[0][2]
+                db.close
+        end
+        
     
+<<<<<<< HEAD
         # Test query single product
         def test_get_single_customer_products
                 single_products = @product.get_all_active_customer_products(1)
@@ -61,7 +74,8 @@ class ProductTest < Minitest::Test
                 update_product = @product.update_product(@product)
                 assert_instance_of(Array, update_product)
         end
+=======
+>>>>>>> master
 
-        # Test delete product
     
 end

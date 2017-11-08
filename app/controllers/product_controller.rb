@@ -56,7 +56,6 @@ class ProductController
     list_of_products.each_with_index do |customer, index|
         puts "#{list_of_products}"
     end
-end
     # GET single product - get
 
 
