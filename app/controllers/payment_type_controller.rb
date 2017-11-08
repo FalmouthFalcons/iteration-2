@@ -35,8 +35,6 @@ class PaymentTypeController
 
 end
 
-
-
 # REQUIREMENTS:
     # Given a customer has been made active in the program
     # When the user selects the option to add a payment type
