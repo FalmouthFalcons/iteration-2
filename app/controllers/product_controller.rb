@@ -31,9 +31,11 @@ class ProductController
     # GET all product - get
     list_of_products = Product.new.get_all_products
     puts "Select customer by id to update account:"
-    list_of_customers.each_with_index do |customer, index|
+    list_of_products.each_with_index do |customer, index|
         puts "#{index+1}. #{customer[2]} #{customer[1]}"
     end
+
+    
 
 
 
