@@ -69,6 +69,6 @@ class OrderController
             # add_payment_to_order
             puts "Please select a payment type:"
             
-
+        end
    end
 end
