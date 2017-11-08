@@ -30,10 +30,6 @@ end
     #and_get_active_customer??
 
     # Test GET all product - get
-    # This will return all of the products that a customer has
-    def get_customer_products(1)
-        
-    end
 
 
     # Test GET single product - get
