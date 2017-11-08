@@ -6,8 +6,6 @@ class PaymentTypeController
     
     attr_accessor :payment_type, :account_number
 
-    # Conditional logic to check if customer has been selected: 
-    # def menu_customer_selected 
         
     # Method for customer to add a payment type via CLI: 
     def add_payment_type_menu
@@ -19,6 +17,8 @@ class PaymentTypeController
         puts "Enter account number:"
         puts ">"
         @account_number = set_field
+        
+        puts "Success: payment type: #{payment_type} and account number: #{account_number} have been added to customer: #{Customer.customer_id}"
     end 
 
     # Captures the user input from CLI

@@ -25,6 +25,17 @@ class Product
 
         end
     
+        # Method to query for all customers
+        def get_all_products
+                begin
+                db = SQLite3::Database.open(ENV["BANGAZON"])
+                array_of_products = db.execute ("SELECT * FROM products")
+                db.close
+                rescue SQLite3::Exception => e
+                p "fail to get_all_products! #{e}"
+                end
+            array_of_products
+        end        
    
         # delete product
         def destroy_product(single_product_id)

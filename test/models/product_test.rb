@@ -11,11 +11,10 @@ class ProductTest < Minitest::Test
         end
         # Test create product sql
         # I am testing that the product was created(I think, but maybe not)
-        # def test_create_new_product
-        #         new_product_id = @product.create_new_product
-        #         puts new_product_id
-        #         assert_operator(new_product_id, :>, 0)
-        # end
+        def test_create_new_product
+                new_product_id = @product.create_new_product
+                assert_operator(new_product_id, :>, 0)
+        end
 
 
          # Test for initialized class with arguments
@@ -39,18 +38,16 @@ class ProductTest < Minitest::Test
 
         # Test create product sql
         # I am testing that the product was created(I think, but maybe not)
-        # def test_create_new_product
-        #         new_product_id = @product.create_new_product
-        #         puts new_product_id
-        #         assert_operator(new_product_id, :>, 0)
-        # end
+        def test_create_new_product
+                new_product_id = @product.create_new_product
+                assert_operator(new_product_id, :>, 0)
+        end
     
         # Test query for all product
-        # I am testing to see if the result is greater than or equal to one. If so, that means that I'm pulling in
-        # the customer's products
-        def test_get_all_active_customer_products()
-                @active_customer_products = @product.get_all_active_customer_products
-                assert_instance_of(Array, @active_customer_products)
+        def test_all_products
+                all_products = @product.get_all_products
+                # test returns array
+                assert_instance_of(Array, all_products)
         end
     
         # Test query single product
