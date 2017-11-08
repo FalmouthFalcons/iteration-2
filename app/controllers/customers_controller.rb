@@ -4,6 +4,9 @@ class CustomersController
 
     attr_accessor :last_name, :first_name, :phone_number, :street_address, :city, :us_state, :zip_code
 
+    # active customer loads as default nil 
+    @@customer_active = nil 
+
     # Method creates CLI menu to add customer
     def add_new_customer_menu
         begin
@@ -81,16 +84,20 @@ class CustomersController
     def menu_for_getting_active_customer
         begin
         list_of_customers = Customer.new.get_all_customers
-        puts "Which customer will be active?"
+        puts "Select customer by id to update account:"
         list_of_customers.each_with_index do |customer, index|
             puts "#{index+1}. #{customer[2]} #{customer[1]}"
         end
         #Capture user input for customer_id #; provide confirmation of selected customer 
         selected_customer = gets.chomp
+        
         active_customer = list_of_customers[(selected_customer.to_i - 1)]
+            # displays customer_id first_name last_name
             puts "Selected Customer: #{active_customer[2]} #{active_customer[1]}"
         
         self.class.set_active_customer(active_customer[0])    
+
+
 
         rescue SQLite3::Exception => e
         p "Exception with menu_for_getting_active_customer: #{e}"
