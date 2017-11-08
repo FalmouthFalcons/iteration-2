@@ -8,6 +8,7 @@ class Order
         attr_accessor  :customer_id, :payment_id, :id
 
         #Initilze order class
+
         def initialize(customer = nil, payment_type = nil, id = nil)
         @customer_id = customer
         @id = id
@@ -18,6 +19,7 @@ class Order
        def create_new_order
         begin
         db = SQLite3::Database.open(ENV["BANGAZON"])
+
         db.execute('INSERT INTO orders (customer_id, id, payment_type_id) VALUES (?, ?, ?)', [@customer_id, @id, @payment_type])
         last_record = db.last_insert_row_id
         db.close
@@ -32,6 +34,7 @@ class Order
         db = SQLite3::Database.open(ENV["BANGAZON"])
         array_of_orders = db.execute("SELECT customers.id 'Customer Number', customers.last_name 'Last Name', customers.first_name 'First Name', orders.id 'Order Number',  products.product_title 'Product', products.product_price 'Price'
         FROM orders, customers, order_products, products
+
         WHERE orders.customer_id = ?
         AND orders.id = ?
         AND order_products.product_id = products.id", [@customer_id, @id])
@@ -56,10 +59,11 @@ class Order
         def add_product_to_order(product_id)
                 begin
                 db = SQLite3::Database.open(ENV["BANGAZON"])
-                new_order_product_id = db.execute('INSERT into order_products (product_id, order_id) VALUES (?,?)', [product_id, @id])
+                db.execute('INSERT into order_products (product_id, order_id) VALUES (?,?)', [product_id, @id])
+                last_row = db.last_insert_row_id
                 db.close
                 end
-                add_product_to_order
+                last_row
         end
 
 

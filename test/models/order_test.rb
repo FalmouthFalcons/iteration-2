@@ -13,7 +13,7 @@ class OrderTest < Minitest::Test
                 @payment_type = PaymentType.new("payment_type", "account_number", @customer).create_new_payment_type
                 @order = Order.new(@customer, @payment_type)
                 @product = Product.new("product_title", "product_price", @customer)
-                @order.id = @new_order_id
+                @order.id = @order.create_new_order
         end
 
         #Test for initialize
@@ -23,8 +23,7 @@ class OrderTest < Minitest::Test
 
         # Test create order with sql
         def test_create_order_sql
-                new_order_id = @order.create_new_order
-                assert_operator(new_order_id, :>, 0)
+                assert_operator(@order.id, :>, 0)
         end
 
 
