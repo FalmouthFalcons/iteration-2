@@ -2,7 +2,7 @@ require_relative 'customers_controller.rb'
 require_relative 'product_controller.rb'
 require_relative 'payment_type_controller.rb'
 require_relative 'orders_controller.rb'
-require_relative 'product_type_controller.rb'
+# require_relative 'product_type_controller.rb'
 
 
 class MainMenuController
