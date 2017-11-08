@@ -28,7 +28,6 @@ class OrderTest < Minitest::Test
         end
 
 
-
         # test query orders by customer_id
         # needs to query orders and order_products tables to get order with products
         def test_get_customer_order
@@ -45,8 +44,7 @@ class OrderTest < Minitest::Test
 
         #Test add product to order
         #query orders with null payment type
-        def test_add_product_to_order
-                new_order_product_id = @order.add_product_to_order(1)
+        def test_add_product_to_order new_order_product_id = @order.add_product_to_order(1)
                 assert_operator(new_order_product_id, :>, 0)
         end
 
