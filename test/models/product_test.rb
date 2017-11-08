@@ -45,7 +45,7 @@ class ProductTest < Minitest::Test
     
         # Test query for all product
         def test_all_products
-                all_products = @product.get_all_products
+                all_products = @product.get_all_products(1)
                 # test returns array
                 assert_instance_of(Array, all_products)
         end

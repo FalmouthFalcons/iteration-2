@@ -29,7 +29,8 @@ class Product
         def get_all_products
                 begin
                 db = SQLite3::Database.open(ENV["BANGAZON"])
-                array_of_products = db.execute ("SELECT * FROM products")
+                array_of_products = db.execute ("SELECT * FROM products 
+                ")
                 db.close
                 rescue SQLite3::Exception => e
                 p "fail to get_all_products! #{e}"
@@ -47,10 +48,7 @@ class Product
         # get all  of the active customer's products
         def get_all_active_customer_products(customer_id)
                 db = SQLite3::Database.open(ENV["BANGAZON"])
-                get_active_customer_product = db.execute("
-                select * 
-                FROM products 
-                where customer_id = #{customer_id}")
+                get_active_customer_product = db.execute("select * FROM products where customer_id = #{customer_id}")
                 db.close
                 get_active_customer_product
         end
