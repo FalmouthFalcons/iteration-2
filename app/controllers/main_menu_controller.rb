@@ -99,7 +99,7 @@ class MainMenuController
       if CustomersController.get_active_customer == nil 
         puts "Must select active customer from option 2."
       else
-        ProductController.new.update_customer_product_menu  
+        ProductController.new.update_product  
         # Call the method that will display the prompts for  ... update product information
       end 
 
