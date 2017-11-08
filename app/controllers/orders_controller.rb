@@ -1,5 +1,5 @@
 class OrderController 
-    
+    attr_accessor :customer_id, :payment_type_id
 # add_product_to_order
     # will call create_new_order by customer_id & add_product_to_order
     #if statement for if order exists

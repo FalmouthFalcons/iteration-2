@@ -59,10 +59,11 @@ class Order
         def add_product_to_order(product_id)
                 begin
                 db = SQLite3::Database.open(ENV["BANGAZON"])
-                new_order_product_id = db.execute('INSERT into order_products (product_id, order_id) VALUES (?,?)', [product_id, @id])
+                db.execute('INSERT into order_products (product_id, order_id) VALUES (?,?)', [product_id, @id])
+                last_row = db.last_insert_row_id
                 db.close
                 end
-                add_product_to_order
+                last_row
         end
 
 
