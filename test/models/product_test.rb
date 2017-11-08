@@ -13,7 +13,6 @@ class ProductTest < Minitest::Test
         # I am testing that the product was created(I think, but maybe not)
         def test_create_new_product
                 new_product_id = @product.create_new_product
-                puts new_product_id
                 assert_operator(new_product_id, :>, 0)
         end
 
@@ -41,11 +40,15 @@ class ProductTest < Minitest::Test
         # I am testing that the product was created(I think, but maybe not)
         def test_create_new_product
                 new_product_id = @product.create_new_product
-                puts new_product_id
                 assert_operator(new_product_id, :>, 0)
         end
     
         # Test query for all product
+        def test_all_products
+                all_products = @product.get_all_products
+                # test returns array
+                assert_instance_of(Array, all_products)
+        end
     
         # Test query single product
     
