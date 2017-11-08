@@ -35,12 +35,6 @@ class ProductController
         puts "#{index+1}. #{customer[2]} #{customer[1]}"
     end
 
-    
-
-
-
-
-
     # GET single product - get
 
 
