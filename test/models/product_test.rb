@@ -7,7 +7,7 @@ class ProductTest < Minitest::Test
 
          #setup
          def setup
-                @product = Product.new("Blue Book", "6.99", 1)
+                @product = Product.new("product_title", "product_price", "customer_id")
         end
         # Test create product sql
         # I am testing that the product was created(I think, but maybe not)
@@ -51,8 +51,16 @@ class ProductTest < Minitest::Test
         end
     
         # Test query single product
+        def test_get_single_customer_products
+                single_products = @product.get_all_active_customer_products(1)
+                assert_instance_of(Array, single_products)
+        end
     
         # Test Update product
+        def test_update_product
+                update_product = @product.update_product(@product)
+                assert_instance_of(Array, update_product)
+        end
 
         # Test delete product
     

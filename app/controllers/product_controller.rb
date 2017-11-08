@@ -17,6 +17,10 @@ class ProductController
 
         add_new_product
     end 
+
+    # This will be the menu to select a spectific
+
+    # This will be the menu to update a customer's product
     
     # This method is collecting the user's input
     def set_field
@@ -35,12 +39,6 @@ class ProductController
         puts "#{index+1}. #{customer[2]} #{customer[1]}"
     end
 
-    
-
-
-
-
-
     # GET single product - get
 
 
@@ -52,6 +50,11 @@ class ProductController
 
 
     # Update product by id - patch/put
+    def update_customer_product
+        aProduct = Product.new(@product_title, @product_price, @customer_id)
+        aProduct.update_product
+
+    end
 
     # Delete product by id - destroy
     def delete_product(single_product_id)
