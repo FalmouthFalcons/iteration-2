@@ -77,5 +77,5 @@ class ProductController
     def delete_product(single_product_id)
         Product.new.destroy_product(single_product_id)
     end
-
+end 
 end
