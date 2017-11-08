@@ -1,6 +1,10 @@
 require_relative 'customers_controller.rb'
 require_relative 'product_controller.rb'
 require_relative 'payment_type_controller.rb'
+require_relative 'orders_controller.rb'
+require_relative 'product_type_controller.rb'
+
+
 class MainMenuController
 
   def display_main_menu
@@ -12,8 +16,16 @@ class MainMenuController
     puts "1. Create a customer account"
     puts "2. Choose active customer"
     puts "3. Add a payment type for customer"
-    puts "4. Add a new product"
-    # Add all other options available to the user here.
+    puts "4. Create a new product" 
+    puts "5. Add product to shopping cart"
+    puts "6. Complete an order"
+    puts "7. Remove customer product"
+    puts "8. Update product information"
+    # needs active_customer not nil? 
+
+    # puts "9. Show stale products"
+    # puts "10. Show customer revenue report"
+    # puts "11. Show overall product popularity"
     puts "12. Leave Bangazon!"
 
 
@@ -42,13 +54,64 @@ class MainMenuController
       end   
 
     when "4"
-      # Call the method that will display the prompts for choosing to add a new product
+      # # Is "2" active customer selected? 
+      # # If NO, puts "must select customer from option 2", redirect to main menu.
+      if CustomersController.get_active_customer == nil 
+        puts "Must select active customer from option 2."
+      else
+      # Call the method that will display the prompts for ... adding a new product
       ProductController.new.add_new_product_menu
+      end 
+
     when "5"
-    
-    when "12" 
+      # # Is "2" active customer selected? 
+      # # If NO, puts "must select customer from option 2", redirect to main menu.
+      if CustomersController.get_active_customer == nil 
+        puts "Must select active customer from option 2."
+      else
+        OrderController.new.add_product_to_shopping_cart 
+      # Call the method that will display the prompts for ... add product to chopping cart (order)  
+      end 
+
+    when "6"
+      # # Is "2" active customer selected? 
+      # # If NO, puts "must select customer from option 2", redirect to main menu.
+      if CustomersController.get_active_customer == nil 
+        puts "Must select active customer from option 2."
+      else
+        # Call the method that will display the prompts for ... complete an order 
+        OrdersController.new.complete_customer_order
+      end 
+        
+      when "7"
+        # # Is "2" active customer selected? 
+        # # If NO, puts "must select customer from option 2", redirect to main menu.
+        if CustomersController.get_active_customer == nil 
+          puts "Must select active customer from option 2."
+        else
+          ProductController.new.delete_product  
+          # Call the method that will display the prompts for ... delete single product
+        end 
+          
+        when "8"
+          # # Is "2" active customer selected? 
+      # # If NO, puts "must select customer from option 2", redirect to main menu.
+      if CustomersController.get_active_customer == nil 
+        puts "Must select active customer from option 2."
+      else
+        ProductController.new.update_product  
+        # Call the method that will display the prompts for  ... update product information
+      end 
+
+    # when "9"  
+
+    # when "10"
+      
+    # when "11"  
+      
+      when "12" 
           break
-    end 
+      end 
     end 
   end
 end
