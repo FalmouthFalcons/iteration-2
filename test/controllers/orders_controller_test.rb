@@ -1,19 +1,40 @@
 require 'minitest/autorun'
-require_relative '../app/controllers/orders_controller.rb'
+require_relative './app/controllers/orders_controller.rb'
+
 
 class OrderControllerTest < Minitest::Test
     
+    def setup
+        @orderController = OrderController.new
+    end
 
-    # Test GET all order - get
+    #Test for initialize
+    def test_initialize_order_controller
+            assert_intance_of OrderController, @orderController
+    end
 
+    # Test add_product_to_order
+    # will call create_new_order by customer_id & add_product_to_order
+    #if statement for if order exists
+    def test_add_product_to_shopping_cart
+        new_order = OrderController.create_new_order(1)
+        assert_equal 1, new_order
+        product_added_to_order = OrderController.add_product_to_order
+        assert_equal 1, product_added_to_order
+    end
 
-    # Test GET single order - get
+    # calls:
+    # get_customer_order with product price sum
+    # add_payment_to_order
 
-
-    # Test Create order - post
-
-
-    # Test Update order by id - patch/put
+    # if no products in order print "Please add some products to your order first. Press any key to return to main menu."
+    #*******would there be an order with no products???????
+   def test_complete_customer_order
+    customer_order = OrderController.get_customer_order(1)
+    assert_instance_of(Array, customer_order)
+    add_payment = OrderController.add_payment_to_order(1)
+    assert_equal 1, add_payment
+   end
 
 
 end
